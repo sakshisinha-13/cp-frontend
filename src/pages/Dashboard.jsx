@@ -65,7 +65,7 @@ export default function Dashboard() {
   const company = query.trim(); // Company name input
   if (!company || previousQuery.current === company) return;
 
-  const url = new URL("http://localhost:5000/api/problems"); // ✅ Correct endpoint
+  const url = new URL("https://cp-backend-k6qn.onrender.com/api/problems"); // ✅ Correct endpoint
 
   // Dynamically append filters
   url.searchParams.append("company", company);
