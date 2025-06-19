@@ -8,18 +8,18 @@ It features a LeetCode-style UI, dynamic code execution for C++, real-time test 
 
 ---
 
-## 🚀 Features
+##  Features
 
-- 🔐 **Authentication** – Login and signup functionality
-- 📚 **Problem Dashboard** – Browse real OA and interview questions (filtered by company, topic, difficulty, etc.)
-- 🧠 **Detailed Problem View** – Description, input/output format, constraints, and examples
-- 💻 **Code Editor** – Write and run C++ code with AceEditor
-- ✅ **Test Case Evaluation** – Input/output checked against real test cases
-- 🌗 **Dark Mode UI** – LeetCode-style layout with tabs and themes
+-  **Authentication** – Login and signup functionality
+-  **Problem Dashboard** – Browse real OA and interview questions (filtered by company, topic, difficulty, etc.)
+-  **Detailed Problem View** – Description, input/output format, constraints, and examples
+-  **Code Editor** – Write and run C++ code with AceEditor
+-  **Test Case Evaluation** – Input/output checked against real test cases
+-  **Dark Mode UI** – LeetCode-style layout with tabs and themes
 
 ---
 
-## 🖥️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - [React.js](https://reactjs.org/)
@@ -44,7 +44,7 @@ It features a LeetCode-style UI, dynamic code execution for C++, real-time test 
 
 ---
 
-## 🛠️ Local Setup Instructions
+##  Local Setup Instructions
 
 ```bash
 # Clone the repo
