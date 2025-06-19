@@ -1,58 +1,66 @@
-# CodePlayground – Practice Coding with Real Interview Questions
+# CodePlayground Frontend
 
-[Live Site 🔗](https://cp-frontend-six.vercel.app/login)
+Live Site: [https://cp-frontend-six.vercel.app/login](https://cp-frontend-six.vercel.app/login)
 
-CodePlayground is a full-stack coding platform designed for students and job-seekers to practice real online assessment (OA) and interview questions asked by top tech companies like Microsoft, ServiceNow, and Amazon.
+This is the frontend of CodePlayground, a LeetCode-style web application built to help students and professionals practice real online assessment (OA) and interview questions from top tech companies like Microsoft, ServiceNow, Amazon, and more.
 
-It features a LeetCode-style UI, dynamic code execution for C++, real-time test case validation, and structured problem descriptions.
+It provides a clean UI with a code editor, test case evaluation, and detailed problem views.
 
 ---
 
-##  Features
+## Features
 
--  **Authentication** – Login and signup functionality
--  **Problem Dashboard** – Browse real OA and interview questions (filtered by company, topic, difficulty, etc.)
--  **Detailed Problem View** – Description, input/output format, constraints, and examples
--  **Code Editor** – Write and run C++ code with AceEditor
--  **Test Case Evaluation** – Input/output checked against real test cases
--  **Dark Mode UI** – LeetCode-style layout with tabs and themes
+- User authentication (Login / Signup)
+- Problem dashboard with filters (company, topic, year, difficulty)
+- Problem view page with:
+  - Description
+  - Input/Output format
+  - Constraints
+  - Examples
+- Code editor with AceEditor (C++ support)
+- Submit code and evaluate against real test cases
+- Modern dark UI inspired by LeetCode
 
 ---
 
 ## Tech Stack
 
 ### Frontend
-- [React.js](https://reactjs.org/)
-- [AceEditor](https://ace.c9.io/) for coding interface
-- [Axios](https://axios-http.com/) for API calls
-- [React Router](https://reactrouter.com/) for navigation
-- [Tailwind CSS or custom CSS] for styling (optional)
 
-### Backend (linked repo)
-- [Node.js](https://nodejs.org/)
-- [Express.js](https://expressjs.com/)
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for problem data
-- [C++ Code Executor] using `child_process` and `g++`
+- React.js
+- React Router DOM
+- Axios
+- Ace Editor (C++ mode)
+- Custom CSS and inline styles
 
 ---
 
-## 📸 Screenshots
-
-| Description View | Code Editor View |
-|------------------|------------------|
-| ![Description View](https://i.imgur.com/YOUR_DESC_IMG.png) | ![Editor View](https://i.imgur.com/YOUR_EDITOR_IMG.png) |
-
----
-
-##  Local Setup Instructions
+## Getting Started Locally
 
 ```bash
-# Clone the repo
+# Clone the repository
 git clone https://github.com/sakshisinha-13/cp-frontend.git
 cd cp-frontend
 
 # Install dependencies
 npm install
 
-# Start the development server
+# Start development server
 npm start
+
+Folder Structure
+csharp
+Copy
+Edit
+cp-frontend/
+├── public/
+├── src/
+│   ├── components/         # UI components like ProblemCard, Header, Filters
+│   ├── pages/              # Route pages (Login, Signup, Dashboard, ProblemView)
+│   ├── utils/              # Helper functions (recommendation logic, filters, etc.)
+│   └── App.js              # Routing and layout
+Author
+Sakshi Sinha
+B.Tech, IIT Patna
+GitHub: @sakshisinha-13
+
