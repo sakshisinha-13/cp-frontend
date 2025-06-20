@@ -60,7 +60,7 @@ const runCode = async () => {
       expectedOutput: ex.expectedOutput || ex.output || "",
     }));
 
-    const res = await axios.post("/api/execute", {
+    const res = await axios.post("https://cp-backend-k6qn.onrender.com/api/execute", {
       language,
       code,
       testCases,

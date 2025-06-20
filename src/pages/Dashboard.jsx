@@ -101,7 +101,7 @@ localStorage.setItem("dashboardFilters", JSON.stringify(filters));
 
   if (!company || previousQuery.current === company) return;
 
-  const url = new URL("http://localhost:5000/api/problems"); // Correct endpoint
+  const url = new URL("https://cp-backend-k6qn.onrender.com/api/problems"); // Correct endpoint
 
   // Dynamically append filters
   url.searchParams.append("company", company);
@@ -122,7 +122,7 @@ localStorage.setItem("dashboardFilters", JSON.stringify(filters));
     const userId=user?._id;
 
 if (userId) {
-  const progressRes = await fetch(`http://localhost:5000/api/progress/${userId}`);
+  const progressRes = await fetch(`https://cp-backend-k6qn.onrender.com/api/progress/${userId}`);
   const progressData = await progressRes.json();
 
   const tickMap = {};
@@ -148,7 +148,7 @@ const toggleTick = async (questionId) => {
   setTickedQuestions(prev => ({ ...prev, [questionId]: isSolved }));
 
   if (userId) {
-    await fetch("http://localhost:5000/api/progress", {
+    await fetch("https://cp-backend-k6qn.onrender.com/api/progress", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, questionId, isSolved }),
