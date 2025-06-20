@@ -37,8 +37,8 @@ const Playground = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const [code, setCode] = useState(defaultCodeMap["javascript"]);
-  const [language, setLanguage] = useState("javascript");
+  const [code, setCode] = useState(defaultCodeMap["C++"]);
+  const [language, setLanguage] = useState("c_cpp");
   const [input, setInput] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -57,10 +57,10 @@ const runCode = async () => {
     const rawExamples = state.testCases || state.examples || [];
     const testCases = rawExamples.map((ex) => ({
       input: ex.input,
-      expectedOutput: ex.output,
+      expectedOutput: ex.expectedOutput || ex.output || "",
     }));
 
-    const res = await axios.post("https://cp-backend-k6qn.onrender.com/api/execute", {
+    const res = await axios.post("/api/execute", {
       language,
       code,
       testCases,
@@ -156,7 +156,7 @@ const runCode = async () => {
             onClick={runCode}
             className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-md font-semibold"
           >
-            Run Code
+            Run
           </button>
         </div>
 

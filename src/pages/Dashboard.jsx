@@ -50,29 +50,65 @@ export default function Dashboard() {
   const [topic, setTopic] = useState('');
   const [year, setYear] = useState('');
   const [difficulty, setDifficulty] = useState('');
-  const [darkMode, setDarkMode] = useState(false);
   const [simpleView, setSimpleView] = useState(false);
   const [noMatch, setNoMatch] = useState(false);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const previousQuery = useRef('');
+  const restoredFilters = useRef(false);
   const [tickedQuestions, setTickedQuestions] = useState({});
+const [darkMode, setDarkMode] = useState(() => {
+  const savedTheme = localStorage.getItem("theme");
+  return savedTheme === "dark";
+});
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', darkMode);
-  }, [darkMode]);
+useEffect(() => {
+  document.documentElement.classList.toggle('dark', darkMode);
+  localStorage.setItem("theme", darkMode ? "dark" : "light");
+}, [darkMode]);
 
+useEffect(() => {
+  const savedFilters = JSON.parse(localStorage.getItem("dashboardFilters"));
+  if (savedFilters) {
+    setQuery(savedFilters.query || '');
+    setRole(savedFilters.role || '');
+    setYoe(savedFilters.yoe || '');
+    setAssessmentType(savedFilters.assessmentType || '');
+    setTopic(savedFilters.topic || '');
+    setYear(savedFilters.year || '');
+    setDifficulty(savedFilters.difficulty || '');
+    restoredFilters.current = true; // ✅ mark that we restored filters
+  }
+}, []);
+useEffect(() => {
+  if (restoredFilters.current && query !== '') {
+    handleSearch();
+    restoredFilters.current = false; // only call once
+  }
+}, [query, role, yoe, assessmentType, topic, year, difficulty]);
   const handleSearch = async () => {
   const company = query.trim(); // Company name input
+  const filters = {
+  query: company,
+  role,
+  yoe,
+  assessmentType,
+  topic,
+  year,
+  difficulty,
+};
+
+localStorage.setItem("dashboardFilters", JSON.stringify(filters));
+
   if (!company || previousQuery.current === company) return;
 
-  const url = new URL("https://cp-backend-k6qn.onrender.com/api/problems"); // ✅ Correct endpoint
+  const url = new URL("http://localhost:5000/api/problems"); // Correct endpoint
 
   // Dynamically append filters
   url.searchParams.append("company", company);
   if (role) url.searchParams.append("role", role);
   if (yoe) url.searchParams.append("yoe", yoe);
   if (assessmentType) url.searchParams.append("type", assessmentType);
-  if (topic) url.searchParams.append("topic", topic);
+  if (topic) url.searchParams.append("topic", labelToKeyMap[topic] || topic);
   if (difficulty) url.searchParams.append("difficulty", difficulty);
   if (year) url.searchParams.append("year", year);
 
@@ -82,6 +118,18 @@ export default function Dashboard() {
     const response = await fetch(url);
     const data = await response.json();
     setFilteredQuestions(data);
+    const user = JSON.parse(localStorage.getItem("codeplayground-user"));
+    const userId=user?._id;
+
+if (userId) {
+  const progressRes = await fetch(`http://localhost:5000/api/progress/${userId}`);
+  const progressData = await progressRes.json();
+
+  const tickMap = {};
+  progressData.forEach(id => { tickMap[id] = true });
+  setTickedQuestions(tickMap);
+}
+
     setNoMatch(data.length === 0);
     previousQuery.current = company;
   } catch (err) {
@@ -91,9 +139,21 @@ export default function Dashboard() {
   }
 };
 
-const toggleTick = (key) => {
-  if (!key) return;
-  setTickedQuestions(prev => ({ ...prev, [key]: !prev[key] }));
+const toggleTick = async (questionId) => {
+  if (!questionId) return;
+   const user = JSON.parse(localStorage.getItem("codeplayground-user"));
+    const userId=user?._id;
+  const isSolved = !tickedQuestions[questionId];
+
+  setTickedQuestions(prev => ({ ...prev, [questionId]: isSolved }));
+
+  if (userId) {
+    await fetch("http://localhost:5000/api/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, questionId, isSolved }),
+    });
+  }
 };
 
   const topicCounts = filteredQuestions.reduce((acc, q) => {

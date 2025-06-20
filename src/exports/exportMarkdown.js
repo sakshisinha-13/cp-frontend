@@ -1,16 +1,10 @@
-// exports/exportMarkdown.js
-// -----------------------------------------------------------------------------
-// Utility function to export filtered questions to a Markdown table.
-// Each row shows: Link, Type, Topic, Difficulty
-// -----------------------------------------------------------------------------
-
 export const exportToMarkdown = (questions) => {
   // Define Markdown table headers
-  const headers = "| Link | Type | Topic | Difficulty |\n|------|------|--------|------------|";
+  const headers = "| Question | Type | Topic | Difficulty |\n|----------|------|--------|------------|";
 
-  // Convert each question into a Markdown table row
+  // Convert each question into a Markdown table row (title instead of link)
   const rows = questions.map(q =>
-    `| ${q.link || ''} | ${q.type || ''} | ${q.topic || ''} | ${q.difficulty || ''} |`
+    `| ${q.title || 'Untitled'} | ${q.type || ''} | ${q.topic || ''} | ${q.difficulty || ''} |`
   );
 
   // Combine headers and rows into a single Markdown string

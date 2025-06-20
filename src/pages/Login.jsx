@@ -42,7 +42,7 @@ function Login() {
     if (handleValidation()) {
       const { email, password } = values;
       try {
-        const { data } = await axios.post("https://cp-backend-k6qn.onrender.com/api/auth/login", {
+        const { data } = await axios.post("http://localhost:5000/api/auth/login", {
           email,
           password,
         });
