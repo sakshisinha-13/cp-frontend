@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# CodePlayground – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CodePlayground is a React-based frontend application for exploring coding interview problems. It supports filtering by topic, company, difficulty, and allows exporting questions in CSV, Markdown, or PDF formats.
 
-## Available Scripts
+Live App: [https://cp-frontend-six.vercel.app](https://cp-frontend-six.vercel.app)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Filter questions by company, topic, difficulty, and more
+- Export questions as CSV, PDF, or Markdown
+- Clean and responsive UI
+- Data visualization with pie charts and insights
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Folder Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+client/
+├── public/ # Static files like index.html
+├── src/
+│ ├── assets/ # Logos, images, and static resources
+│ ├── components/ # Reusable components (Navbar, Filters, etc.)
+│ ├── exports/ # Export logic for CSV, Markdown, PDF
+│ ├── pages/ # Page-level components (Dashboard, Playground)
+│ ├── App.js # Root component with route definitions
+│ └── index.js # Entry point that renders the App
+├── .gitignore
+├── package.json
+└── README.md
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sakshisinha-13/cp-frontend.git
+   cd cp-frontend/client
+Install dependencies:
+npm install
+Run the app locally:
+npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Tech Stack
+React.js
+Tailwind CSS
+React Router DOM
+Axios / Fetch API
+jsPDF, html2canvas
+Chart.js
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
